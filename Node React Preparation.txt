@@ -1,0 +1,980 @@
+git clone https://github.com/SherinPS7/gk_AI_Study_App.git
+
+Encryption : 
+Backend : 
+-----------
+cd backend
+npm i 
+
+
+backend\.env  : DB : auth_system 
+                Password : root  
+                BACKEND_URL : http://localhost:3000
+                PORT : 3000
+
+DROP TABLE IF EXISTS "Sessions" CASCADE;
+
+backend\server.js
+------------------
+const startServer = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('✅ Database connected');
+    await sequelize.sync({ alter: false }); // Use force:true only in development to reset DB
+    console.log('✅ Database synced');
+    const PORT = process.env.PORT || 4000;
+    http.listen(PORT, () => {
+      console.log(`🚀 Listening on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
+  }
+};
+
+
+
+npm start 
+--------------
+
+PS D:\gk_AI_Study_App\backend> npm start
+> start
+> node server.js
+
+Database connected successfully
+✅ Database connected
+✅ Database synced
+🚀 Listening on port 3000
+
+
+Frontend:
+---------
+cd frontend
+npm i      
+frontend\.env  :  VITE_BACKEND_URL=http://localhost:3000/api
+npm run dev
+
+git ignore :
+-------------
+node_modules
+.env
+
+
+Encryption : bcrypt 
+Zod : validation 
+
+
+routes -> index.routes.js 
+server.js -> index.routes.js
+routes -> auth.routes.js 
+
+uploads -> backend
+
+DB - controller - routes - server.js 
+
+Middleware -> check pdf extension 
+checck groups.contoller.js 
+
+.env - database 
+config -> postgres.js
+server.js 
+session.js -> config 
+.env -> config -> project folder 
+--------------------------------
+Type script 
+
+Desing 
+-------
+Shod cn 
+mui components 
+react boostrap 
+
+use effect - > route calll with loading 
+
+
+-------------------------------
+
+Backend ->  cors {
+    origin : http : 5713,
+    credencials : true 
+}
+
+frontend -> api.auth.js   -> base url 
+.env -> backend_url : http :3000 api 
+
+
+---------------------------------
+ clone repo 
+ cd backend : npm install (or) npm i 
+                npm start 
+                3000
+
+cd frontend : npm install 
+            npm run rev 
+            5173
+
+========================================================================================
+
+
+
+
+./app	      same folder
+../app	     one folder up
+../../app	 two folders up
+/app	     root of the system
+
+
+This is a controlled input in React. It keeps your input field synced with React state in real time.
+
+Used 
+---
+Node vertion (18)
+react vertion (16+)
+
+Vite 
+-----
+Latest Stable Vite version - 	7.3.1
+Current unstable (beta) release candidate series  - 	8.0.0‑beta.*
+
+
+Inatll : npm create vite@latest .
+npm i react-router-dom axios bootstrap
+
+frontend\src\main.jsx:
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
+
+Select a framework:
+│  React
+ Select a variant:
+│  JavaScript
+ Use rolldown-vite (Experimental)?:
+│  No
+ Install with npm and start now?
+│  Yes
+
+
+
+Node 
+------
+Stable / Production (LTS)	- v24.13.0
+Latest (Current)	- v25.5.0
+
+React 
+--------
+Stable / Production‑Ready	React 19.2.3
+Major Series	React 19 (latest major)
+
+
+A DDoS (Distributed Denial of Service)
+==================================
+CORS (Cross-Origin Resource Sharing)
+A DDoS (Distributed Denial of Service) attack in the context of Node.js refers to a type of cyberattack where a malicious user or group of users attempts to overwhelm a Node.js server
+
+ES Modules
+-------------
+Node.js allow you to use import and export syntax for module handling, enabling a more standardized way of working with modules in JavaScript
+
+Morgan
+-------
+Morgan logs the HTTP request details.
+Winston
+-----------
+Winston captures errors and logs them to both the console and a file (error.log).
+
+Joi , express-validator
+------------------------
+npm install joi
+
+Joi provides a flexible and expressive schema-based approach to validation with detailed error messages and deep validation features.
+
+express-validator is simpler and integrates well with Express' route handling, allowing easy validation with chainable methods.
+
+
+Example: Pagination with Limit and Skip (Page 2 → skip(10))
+items.slice(10, 20)
+const paginatedItems = items.slice(skip, skip + limit);
+
+
+Example: Profile Image Upload with Multer
+-------------------------------------------
+npm install multer
+
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    // Specify the folder where files should be stored
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    // Set the filename (use original name or generate unique one)
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));  // Preserve the file extension
+  }
+});
+
+
+// Serve static files from the 'uploads' directory
+app.use('/uploads', express.static('uploads'));
+
+
+
+------------------------------------------------------------------------    
+Troubleshooting checklist
+
+ECONNREFUSED — check MySQL server running, host/port correct.
+ER_ACCESS_DENIED_ERROR — check DB username/password and privileges.
+ER_NO_SUCH_TABLE — ensure database selected and users table created.
+ER_DUP_ENTRY — duplicate email; handle with 409 as shown.
+
+
+convert the API to use an ORM (Sequelize)
+add authentication (JWT) and password hashing
+provide a React/HTML front-end to consume this API
+add validation with Joi/express-validator
+
+
+Postman Basics
+--------------
+Area	Description
+Method Dropdown	Choose HTTP method: GET, POST, PUT, DELETE
+URL Bar	Enter your API URL (e.g. http://localhost:3000/users)
+Params Tab	Add query parameters easily instead of typing in URL
+Body Tab	Used for POST/PUT with JSON data
+Send Button	Executes your request
+Response Section	Shows the server’s response (JSON, HTML, etc.)
+
+🧩 Troubleshooting
+Problem	Solution
+Could not get any response	-  Ensure node app.js is running and server is on port 3000
+ECONNREFUSED	            - The URL is wrong or server stopped; check http://localhost:3000 works in browser
+Error about database	    - Verify MySQL is running and db.js has correct credentials
+
+
+
+cd "D:\Personal Projects\Nodejs"
+npm install -g nodemon
+npm install --save-dev nodemon  
+
+
+If your project already has a package.json, open it and find the "scripts" section
+
+"scripts": {
+  "start": "node app.js",
+  "dev": "nodemon app.js"
+}
+npm run dev
+
+
+Command	Purpose
+node app.js	        - Runs your Node.js app once
+nodemon app.js	    - Runs and watches for file changes, restarting automatically
+npm run dev	        - Shortcut defined in package.json that runs Nodemon easily
+
+Explanation
+===========
+cors() allows browser requests from React dev server (usually http://localhost:3000 or Vite default http://localhost:5173).
+Endpoints use /api/users prefix — a common pattern.
+If you prefer the quick route, you can keep existing /create etc. endpoints — React examples below will show both.
+Now open the React app URL printed by Vite (likely http://localhost:5173). React will call backend on http://localhost:5000.
+
+JSX (JavaScript XML)
+---------------------
+JSX (JavaScript XML) is a syntax extension that allows you to write HTML-like code inside JavaScript.
+React uses JSX to describe what the UI should look like.
+
+JSX isn’t actual HTML — it’s converted (transpiled) to JavaScript by tools like Babel.
+
+Example:
+========
+function Welcome() {
+  return (
+    <div>
+      <h1>Hello, React!</h1>
+      <p>This is JSX.</p>
+    </div>
+  );
+}
+
+
+Rule	Example
+Must return one parent element  -   <div>...</div> not <h1></h1><p></p>
+Use camelCase for attributes    - className, not class
+Embed JS with { }	            - <p>{name}</p>
+Close all tags	                - <img />, <input />
+
+Example 
+---------
+const name = "Gokul";
+return <h2>Hello {name}!</h2>;
+
+Output:
+--------
+Hello Gokul!
+
+
+
+useState() — Handling Data & UI Changes
+=====================================
+React is state-driven — your UI updates when data (state) changes.
+The useState() hook is used to store and update data inside a component.
+
+
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0); // initial value = 0
+
+  const increment = () => {
+    setCount(count + 1); // updates count → triggers re-render
+  };
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+
+Part	Meaning
+useState(0) - 	Create a state variable count with initial value 0
+setCount()	- Function to update the state
+count + 1	- New state value
+When you call setCount, React re-renders the component with updated state	
+
+
+Every time setCount() is called → React:
+---------------------------------------
+Updates the internal state.
+Re-renders the component.
+Reflects new data in the DOM automatically.
+
+
+======================================================================
+useEffect() — Side Effects & Lifecycle
+=======================================
+React components can:
+
+Fetch data,
+Listen for events,
+Update the document title, etc.
+These actions are side effects — things that happen outside the normal rendering.
+For that, React gives us useEffect().
+
+
+Dependency array	When it runs
+useEffect(() => {...})	            - Every render
+useEffect(() => {...}, [])	        - Only once (on mount)
+useEffect(() => {...}, [count])	    - Runs only when count changes
+
+========================================================================
+
+Vite — The React App Builder  
+==========================
+Vite (pronounced “Veet”) is a modern frontend build tool created by Evan You (creator of Vue).
+It’s faster and lighter than older tools like Create React App (CRA).
+Default port
+5173
+
+
+Create React App  - slow 
+
+npm create vite@latest frontend -- --template react
+cd frontend
+npm install
+npm run dev
+
+
+VITE v5.x.x  ready in 500ms
+Local:  http://localhost:5173/
+
+Vite Folder Overview
+-----------------------
+frontend/
+├─ index.html           → root HTML file
+├─ src/
+│  ├─ main.jsx          → entry point
+│  ├─ App.jsx           → main component
+│  └─ components/       → reusable components
+├─ package.json         → npm scripts & dependencies
+└─ vite.config.js       → configuration (proxy, etc.)
+
+
+
+
+How They Work Together
+===========================
+When you build your project:
+
+Concept	Role
+JSX	UI structure — how components look
+useState	     - Stores and updates component data
+useEffect	     - Runs side effects like fetching or updating data
+Vite	         - Runs, bundles, and builds your React app
+
+
+Example Combining All:
+=====================
+
+import { useState, useEffect } from 'react';
+
+function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/users')
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  }, []); // runs once when component loads
+
+  return (
+    <div>
+      <h1>User List</h1>
+      {users.map(u => (
+        <p key={u.id}>{u.name} - {u.email}</p>
+      ))}
+    </div>
+  );
+}
+
+export default App;
+
+
+======================================================================
+
+Multer
+======
+npm install multer
+const multer = require('multer');
+
+// static folder for images
+app.use('/uploads', express.static('uploads'));
+
+// Multer setup
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // folder name
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // unique name
+  }
+});
+const upload = multer({ storage });
+
+
+==================================================================
+Helmet
+-------
+Helmet protects Express apps by adding security headers to prevent attacks like XSS, clickjacking, and MIME sniffing
+
+XSS	            - Content-Security-Policy
+Clickjacking	- X-Frame-Options
+MIME sniffing	- X-Content-Type-Options
+Data leak	    - X-Powered-By
+
+What do you mean by JavaScript, TypeScript and modern ECMAScript?
+
+JavaScript is the core language, TypeScript adds type safety to prevent runtime bugs, and modern ECMAScript features like async/await, destructuring, arrow functions, and modules help write clean, scalable production code
+
+TypeScript = JavaScript + type safety + compile-time error checking
+Modern ECMAScript (ES6+ Features) : ❌ Old ES5 (bad) , New JavaScript improvements (ES6, ES7, ES8… ES2024) 
+
+
+Stored Procedure
+-----------------
+SQL code stored inside DB, executed like a function
+Calculate monthly sales report
+
+DELIMITER //
+CREATE PROCEDURE GetMonthlySales(IN month INT)
+BEGIN
+  SELECT SUM(total) 
+  FROM orders 
+  WHERE MONTH(created_at)=month;
+END //
+DELIMITER ;
+
+Call from Node: 
+await db.query("CALL GetMonthlySales(2)");
+
+
+Functions
+----------
+Similar to procedure but returns ONE value
+Add tax to price
+
+CREATE FUNCTION add_tax(price DECIMAL(10,2))
+RETURNS DECIMAL(10,2)
+RETURN price * 1.18;
+
+SELECT add_tax(1000);
+Used in:
+👉 Billing system
+
+
+Explain your MySQL experience
+============================
+We use MySQL as our RDBMS with normalized tables and foreign keys, write optimized queries with joins and indexes, use stored procedures for reports, and functions for calculations like tax or totals.
+
+
+Say real story like:
+
+✅ "I optimized a slow query using indexing and reduced response from 3s to 100ms"
+✅ "Used stored procedures for monthly reports to reduce backend load"  
+
+What is ORM?
+ORM maps database tables to JavaScript objects, so instead of writing SQL manually, we use models like User.findAll() for cleaner and faster development.
+
+We used Sequelize ORM with associations and migrations, which reduced development time and improved maintainability."
+
+
+Step 1 – Model
+---------------
+const User = sequelize.define('User',{
+  name: DataTypes.STRING,
+  email: DataTypes.STRING
+})
+
+
+Insert:
+-------
+User.create({name:"John", email:"john@gmail.com"})
+Select
+-------
+User.findAll()
+Update
+-------
+User.update({name:"Mike"},{where:{id:1}})
+Delete
+------
+User.destroy({where:{id:1}})
+
+
+TypeORM
+=======
+Model using class
+----------------
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id:number
+
+  @Column()
+  name:string
+}
+
+CRUD
+-----
+userRepo.save(user)
+userRepo.find()
+userRepo.delete(1)
+
+-----------------------------------------------------------------------------------------------
+Sequelize vs TypeORM?
+"Sequelize is simple and JavaScript-based, TypeORM is TypeScript-friendly with decorators and better for large structured apps like NestJS."
+
+
+Jest (MOST POPULAR 🔥)
+========================  :
+Mocha, Chai - no need 
+👉 All-in-one testing framework
+👉 Has runner + assertions + mocking
+
+
+
+Install Testing Tools
+---------------------
+Backend
+npm install --save-dev jest supertest
+
+
+npm install --save-dev jest supertest
+jest → test runner
+
+supertest → HTTP assertions for testing APIs
+
+
+package.json
+-----------
+"scripts": {
+  "test": "jest"
+}
+
+
+npm test
+
+Frontend
+========
+npm install --save-dev @testing-library/react @testing-library/jest-dom
+@testing-library/react → test React components
+@testing-library/jest-dom → helpful matchers like toBeInTheDocument()
+
+npm test
+
+
+Redis
+=====
+In-memory database used for caching & fast access
+const redis=require('redis')
+const client=redis.createClient()
+
+// save cache
+client.set("users", JSON.stringify(data))
+
+// get cache
+client.get("users",(err,data)=>console.log(JSON.parse(data)))
+
+
+
+What is S3
+===========
+Cloud file storage service (AWS)
+images, PDFs, videos, backups
+
+const AWS=require('aws-sdk')
+const s3=new AWS.S3()
+
+await s3.upload({
+  Bucket:'mybucket',
+  Key:'profile.jpg',
+  Body:fileBuffer
+}).promise()
+
+
+SQS (Amazon Simple Queue Service)
+=================================
+Message queue for background/async tasks
+
+
+Send message
+==============
+sqs.sendMessage({
+  QueueUrl:url,
+  MessageBody:JSON.stringify(order)
+})
+
+Worker process
+----------------
+sqs.receiveMessage(...)
+
+
+React → Node API
+           ↓
+      MySQL (data)
+      Redis (cache)
+      S3 (files)
+      SQS (background jobs)
+
+
+How to answer in interview (best combined answer)
+=================================================
+👉
+"We used Redis for caching APIs, S3 for file storage like images and invoices, and SQS for background jobs like email notifications to keep the system fast and scalable."
+
+Relationship: JSX → Babel → JavaScript → V8 Engine executes it.
+
+Props :
+=========
+
+What it is: Props are data passed into a component from its parent. Components cannot modify props, they are read-only.
+
+function Greeting({ name }) {
+  return <h1>Hello, {name}!</h1>;
+}
+
+<Greeting name="Alice" />
+
+===========================================================================================================================
+
+sequelise 
+db connect 
+file upload  ?
+authendication totan (jwt)
+http methods 
+Node vertion (18)
+react vertion (16+)
+------------------------------
+react app -> vite 
+react state     
+hook 
+life cycle of react 
+class componets 
+function compononts 
+ DoM trea 
+ virtion dom 
+
+
+prop
+context
+lazy loading
+useMemo
+Context API.
+Virtual DOM
+
+
+Socket.io. 
+
+1. How do you structure a production Express project?
+👉 MVC (routes → controller → service → model) for clean separation.
+
+Helmet :
+app.use(helmet()), your app gets multiple security headers automatically
+
+Content-Security-Policy
+X-Frame-Options
+X-Content-Type-Options
+X-DNS-Prefetch-Control
+
+15. How do you deploy Node app?
+👉 PM2 + Nginx reverse proxy.
+
+55. How to handle 10k users?
+👉 Load balancer + cluster + Redis cache.
+
+56. How to optimize API?
+👉 Index DB + cache + pagination.
+
+60. How to improve security?
+👉 Helmet + JWT + bcrypt + rate limit + HTTPS.
+
+
+35. How do you deploy Vite app?
+👉 Build → serve dist with Nginx.
+
+37. How do you improve dev speed?
+👉 HMR + ESBuild. (HMR = Hot Module Replacement)
+
+59. How do you improve UX?
+👉 Lazy loading + caching + spinner.
+
+rate limiting :
+--------------
+app.use("/login", rateLimit({ windowMs: 60000, max: 5 }))
+
+❌ Don’t say: “useState manages state”
+✅ Say: “In our dashboard, we used Context for auth and Redux for cart”
+
+Real story = hire faster.
+
+29. How do you structure React project?
+👉 components / pages / services / hooks.
+
+56. How do you structure full project?
+👉 frontend (Vite React) + backend (Express) + DB (MySQL).
+
+
+14. What bundler Vite uses?
+👉 ESBuild (dev) + Rollup (build).
+Dev mode: Fast updates → ESBuild
+Build mode: Optimized production bundle → Rollup
+
+57. How do you deploy full stack?
+👉 React → Nginx
+👉 Node → PM2
+👉 MySQL → Cloud/Server
+
+59. How do you improve UX?
+👉 Lazy loading + caching + spinner.
+
+
+60. Biggest real-world improvement you did?
+👉 “Added Redis cache and reduced API response from 800ms → 80ms”.
+
+❌ Don’t say: “useState manages state”
+✅ Say: “In our dashboard, we used Context for auth and Redux for cart”
+
+19. Difference: require vs import?
+👉 require → CommonJS, import → ES Modules.
+
+20. How to structure production project?
+👉 MVC structure.
+Example: routes → controllers → services → models.
+
+
+25. Logging?
+👉 Morgan / Winston.
+Example: track API errors.
+
+
+
+11.Context API ?
+The Context API in React is a way to share data across components without having to pass props manually at every level (prop drilling).
+No need to pass props manually through intermediate components.
+
+Redux:
+Redux is a full-featured state management library for global, complex state, while Context is a simpler built-in React API for passing state through the component tree.
+✅ Redux pros: Great for large apps with multiple components reading/updating state.
+Summary: Use Redux for large, complex apps; use Context for simple state sharing.
+
+memo:
+
+React.memo “memoizes” a component so that React reuses the last rendered output if props haven’t changed, reducing unnecessary rendering and improving performance.
+
+Imagine ordering food:
+-------------------------
+Callback: “Call me when it’s ready”
+Promise: “Here’s a receipt, check later”
+async/await:
+“I’ll wait at my table, and when it’s ready, I’ll continue eating — meanwhile the restaurant keeps running”
+
+
+
+
+
+
+
+Using fetch().then()
+-------------------
+fetch(url)
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+
+Using async/await
+-----------------
+async function getData() {
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data);
+}
+
+fetch = does the async work
+.then() or await = how you wait for it
+
+async → “This function works with promises”
+await → “Wait here until the promise is done”
+
+What a Promise means (simple)
+===============================
+A Promise says:
+----------------
+“I will give you a value later — either it will succeed or fail.”
+A Promise is an object that represents the eventual success or failure of an asynchronous operation.
+=================================================================
+13. How do you implement search?
+👉 SQL LIKE or full-text index.
+
+
+15. How do you deploy Node app?
+👉 PM2 + Nginx reverse proxy.
+
+How do you optimize performance?
+👉 React.memo + useMemo + lazy loading.
+
+
+29. How do you structure React project?
+👉 components / pages / services / hooks.
+
+35. How do you deploy Vite app?
+👉 Build → serve dist with Nginx.   
+
+37. How do you improve dev speed?
+👉 HMR + ESBuild.
+
+36. How do you add aliases?
+👉 @ → src in vite.config.js.
+
+51. How do you handle large traffic?
+👉 Load balancer + multiple Node instances.
+
+55. How do you handle production errors?
+👉 Logging + monitoring (PM2/NewRelic).
+
+
+
+
+Count Stete example :
+----------------------
+const [count, setCount] = useState(0);
+
+const incrementCount = () => {
+  setCount(prevCount => prevCount + 1);
+};
+
+return (
+  <>
+    <p>Count: {count}</p>
+    <button onClick={incrementCount}>+</button>
+  </>
+);
+
+Use effect :
+-----------
+useEffect(() => {
+  fetchUsers();
+}, []);
+
+const fetchUsers = async () => {
+  const response = await axios.get('/api/users');
+  setUsers(response.data);
+};
+
+-----------------------------------------------
+Props 
+
+Parent
+-----
+function App() {
+  return <Hello name="John" />;
+}
+
+
+Child
+-----
+function Hello(props) {
+  return <h1>Hello {props.name}</h1>;
+}
+
+Private route :
+---------------
+function PrivateRoute() {
+  const token = localStorage.getItem("token");
+  return token ? <Outlet /> : <Navigate to="/login" />;
+}
+
+
+
+Putting it together:
+
+Morgan → Logs every incoming HTTP request.
+Winston → Logs application-level messages and errors (can also capture Morgan output for unified logging).
+
+
+Example test?
+-------------
+expect(sum(2,3)).toBe(5)
+
+
+Array methods
+------------
+map(), filter(), reduce()
+
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map(num => num * 2);
+console.log(doubled); // [2, 4, 6, 8]
+
+
+
+const evens = numbers.filter(num => num % 2 === 0);
+
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+
+map ()       New array	Transform elements	No
+filter()	New array	Select elements by condition	No
+reduce()	Single value	Accumulate/reduce to one result	No
+
+
+const numbers = [1, 2, 3, 4];
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // 10
+
+
+===================================================================================================

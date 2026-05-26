@@ -1,0 +1,116 @@
+git clone https://github.com/SherinPS7/gk_AI_Study_App.git
+
+Encryption : 
+Backend : 
+-----------
+cd backend
+npm i 
+
+
+backend\.env  : DB : auth_system 
+                Password : root  
+                BACKEND_URL : http://localhost:3000
+                PORT : 3000
+
+DROP TABLE IF EXISTS "Sessions" CASCADE;
+
+backend\server.js
+------------------
+const startServer = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('✅ Database connected');
+    await sequelize.sync({ alter: false }); // Use force:true only in development to reset DB
+    console.log('✅ Database synced');
+    const PORT = process.env.PORT || 4000;
+    http.listen(PORT, () => {
+      console.log(`🚀 Listening on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
+  }
+};
+
+
+
+npm start 
+--------------
+
+PS D:\gk_AI_Study_App\backend> npm start
+> start
+> node server.js
+
+Database connected successfully
+✅ Database connected
+✅ Database synced
+🚀 Listening on port 3000
+
+
+Frontend:
+---------
+cd frontend
+npm i      
+frontend\.env  :  VITE_BACKEND_URL=http://localhost:3000/api
+npm run dev
+
+git ignore :
+-------------
+node_modules
+.env
+
+
+Encryption : bcrypt 
+Zod : validation 
+
+
+routes -> index.routes.js 
+server.js -> index.routes.js
+routes -> auth.routes.js 
+
+uploads -> backend
+
+DB - controller - routes - server.js 
+
+Middleware -> check pdf extension 
+checck groups.contoller.js 
+
+.env - database 
+config -> postgres.js
+server.js 
+session.js -> config 
+.env -> config -> project folder 
+--------------------------------
+Type script 
+
+Desing 
+-------
+Shod cn 
+mui components 
+react boostrap 
+
+use effect - > route calll with loading 
+
+
+-------------------------------
+
+Backend ->  cors {
+    origin : http : 5173,
+    credencials : true 
+}
+
+frontend -> api.auth.js   -> base url 
+.env -> backend_url : http :3000 api 
+
+
+---------------------------------
+ clone repo 
+ cd backend : npm install (or) npm i 
+                npm start 
+                3000
+
+cd frontend : npm install 
+            npm run rev 
+            5173
+
+========================================================================================
+
